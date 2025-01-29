@@ -26,7 +26,5 @@ async def view_image(
     image_service: ImageService = Depends(lambda: ImageService(session=next(get_db_session())))
 ):
     """Find image by id."""
-    print(image_id)
-    print("=====")
     image_data = await image_service.get_image_by_id(image_id)
     return StreamingResponse(image_data, media_type="image/jpeg")

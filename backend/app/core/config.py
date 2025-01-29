@@ -1,6 +1,4 @@
 import secrets
-from typing import Any, Literal
-
 from pydantic import (
     PostgresDsn,
     computed_field,
@@ -24,7 +22,7 @@ class Settings(BaseSettings):
         return f"https://{self.DOMAIN}"
 
     BACKEND_CORS_ORIGINS: str = ""
-
+    SECRET_KEY: str = secrets.token_urlsafe(32)
     PROJECT_NAME: str
     POSTGRES_SERVER: str
     POSTGRES_PORT: int = 5432
